@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Squad Elite FUT</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap');
+    </style>    
+    <script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        clifford: '#da373d',
+      }
+      
+    },
+    fontFamily:{
+        Raleway: ["Raleway", 'sans-serif'],
+    }
     
+  }
+}
+    </script>
+</head>
+<body class="bg-[#2b2a2a] text-white">
+    <header class="bg-[#050505] flex justify-between px-16 py-6 items-center">
+        <a href="index.html"><img src="/images/Squad Elite.png" alt="Logo" class="w-40"></a>
+        <nav>
+            <ul class="flex justify-center items-center gap-8">
+                <li><a href="index.html" class="text-xl font-Raleway">Home</a></li>
+                <li><a href="#" class="text-xl font-Raleway">Squad Builder</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1></h1>
+    </section>
 </body>
 </html>
