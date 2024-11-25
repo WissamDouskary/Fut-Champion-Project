@@ -26,17 +26,43 @@ tailwind.config = {
     </script>
 </head>
 <body class="bg-[#2b2a2a] text-white">
-    <header class="bg-[#050505] flex justify-between px-16 py-6 items-center">
-        <a href="index.html"><img src="/images/Squad Elite.png" alt="Logo" class="w-40"></a>
+    <header class="bg-[#050505] flex justify-between px-6 md:px-16 py-6 items-center w-[100%]">
+        <a href="index.html"><img src="/images/Squad Elite.png" alt="Logo" class="w-36 md:w-40"></a>
         <nav>
-            <ul class="flex justify-center items-center gap-8">
-                <li><a href="index.html" class="text-xl font-Raleway">Home</a></li>
-                <li><a href="#" class="text-xl font-Raleway">Squad Builder</a></li>
+            <ul class="justify-center items-center gap-8 md:flex hidden">
+                <li><a href="index.html" class="md:text-xl font-Raleway">Home</a></li>
+                <li><a href="#" class="md:text-xl font-Raleway">Squad Builder</a></li>
             </ul>
         </nav>
+        <img id="burgermenubtn" class="w-8 flex md:hidden" src="images/menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Menu">
+        <img id="burgerclose" class="hidden" src="images/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="closebtn">
+        
     </header>
+    <!-- burgermenu -->
+    <ul id="burgermenu" class="bg-[#56cca3] absolute h-[100%] right-0 w-[75%] hidden md:hidden flex-col gap-4 pt-6 pl-4">
+        <li><a href="index.html" class="md:text-xl font-Raleway">Home</a></li>
+        <li><a href="#" class="md:text-xl font-Raleway">Squad Builder</a></li>
+     </ul>
     <section>
-        <h1></h1>
+        <h1 class="font-Raleway font-bold text-6xl sm:text-7xl md:text-9xl mt-28 ml-10"> Welcome <br> to Squad <span class="text-[#56cca3]">Elite</span> </h1>
     </section>
+
+    <script>
+        document.getElementById("burgermenubtn").addEventListener("click",function(){
+            document.getElementById("burgermenu").classList.add("flex");
+            document.getElementById("burgermenu").classList.remove("hidden");
+            document.getElementById("burgermenubtn").classList.add("hidden");
+            document.getElementById("burgerclose").classList.add("flex");
+            document.getElementById("burgerclose").classList.remove("hidden");
+        })
+        document.getElementById("burgerclose").addEventListener("click",function(){
+            document.getElementById("burgermenu").classList.add("hidden");
+            document.getElementById("burgermenu").classList.remove("flex");
+            document.getElementById("burgermenubtn").classList.add("flex");
+            document.getElementById("burgermenubtn").classList.remove("hidden");
+            document.getElementById("burgerclose").classList.add("hidden");
+            document.getElementById("burgerclose").classList.remove("flex");
+        })
+    </script>
 </body>
 </html>
