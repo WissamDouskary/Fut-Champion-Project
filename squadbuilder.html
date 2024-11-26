@@ -19,8 +19,16 @@
                 },
                 fontFamily:{
                     Raleway: ["Raleway", 'sans-serif'],
-                }
-                
+                },
+                backgroundImage: {
+                'staduim': "url('/images/stadium_background.webp')",
+                'goldenballcard':"url('/images/badge_ballon_dor.webp')",
+                'goldcard':"url('/images/badge_gold.webp')",
+                'totalrushcard':"url('/images/badge_gold.webp')",
+                'messiPhoto':"url('/images/messi.webp')",
+                'intermiami':"url('/images/intermiami.webp')",
+                'argentina':"url('/images/argentina.webp')"
+                 },
               }
             }
     </script>
@@ -45,6 +53,97 @@
         <li><a href="index.html" class="md:text-xl font-Raleway">Home</a></li>
         <li><a href="squadbuilder.html" class="md:text-xl font-Raleway">Squad Builder</a></li>
      </ul>
+     <section class="font-Raleway mt-16 ml-20 mb-7">
+        <h2 class="text-sm opacity-40"> Home ><span class="text-[#56cca3]"> Squad Builder</span> </h2>
+        <p class="text-xl">EA FC 25 Tactics & Formations</p>
+        <p class="text-[#0dd962]">Live Your Dream</p>
+     </section>
+
+
+     <div class="flex gap-24">
+     <section class="bg-staduim h-[100vh] w-[56rem] bg-no-repeat ml-10 mt-6">
+    
+    <!-- attackers -->
+    <div class="flex items-start justify-center gap-14 ">
+
+    <div id="leftWeng" class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+        <!-- card -->
+         
+        <!-- card end -->
+        </div>
+    <div id="striker" class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center mt-[-15px]">
+            
+        </div>
+        <div id="rightWeng" class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+
+        </div>
+    </div>
+    <!-- medfilders -->
+    <div class="flex items-center justify-center gap-14">
+        <div id="" class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+    </div>
+    <!-- defenderse -->
+    <div class="flex items-center justify-center gap-14">
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+    </div>
+    <!-- goalkeeper -->
+    <div class="flex items-center justify-center gap-14">
+        <div class="bg-goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center">
+            
+        </div>
+    </div>
+
+
+     </section>
+     <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl">
+        <form class="max-w-sm mx-auto w-72">
+            <label for="formations" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Formations</label>
+            <select id="Formations" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected>4-3-3</option>
+            </select>
+        </form>
+
+        <form class="max-w-sm mx-auto w-72 mt-16">
+            <label for="formations" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Build Up Style</label>
+            <select id="BuildUp" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option selected value="ShortPassing">Short Passing</option>
+              <option value="Balanced">Balanced</option>
+              <option value="Counter">Counter</option>
+            </select>
+            <p class="text-sm my-3">Players will come short to support the ball carrier rather than make forward runs. This more cautious approach allows the team to maintain their defensive shape for longer during the transition.</p>
+        </form>
+
+        <form class="max-w-sm mx-auto w-72 mt-16">
+            <label for="formations" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white">Defensive Approach</label>
+            <select id="DefensiveApproach" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="Balanced" selected>Balanced</option>
+              <option value="Deep" >Deep</option>
+              <option value="Balanced" >Balanced</option>
+              <option value="Aggressive" >Aggressive</option>
+            </select>
+            <p class="text-sm my-3">This approach gives the defence flexibility on how deep they drop, and which runs they track.</p>
+        </form>
+     </div>
+    </div>
 
 
 
@@ -71,5 +170,6 @@
             document.getElementById("burgerclose").classList.remove("flex");
         })
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
