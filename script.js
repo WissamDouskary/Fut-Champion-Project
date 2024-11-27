@@ -1,4 +1,5 @@
-
+let addedToSquadArr = [];
+let notAddTosquad = [];
 let playersdata = new XMLHttpRequest();
 playersdata.open("GET", "https://brofortech.com/players.json", true);
 playersdata.send();
@@ -99,11 +100,18 @@ playersdata.onreadystatechange = function () {
           </div>
         `
     }
-
+    
     div.addEventListener('click', function () {
-        let positionElement = document.querySelector(`[data-position="${player.position}"]`);
+        let positionElement = document.querySelector(`[player-position="${player.position}"]`);
         positionElement.classList.remove("bg-blackcard")
         positionElement.classList.add("bg-goldcard")
+
+
+
+        
+        
+
+        if(positionFilter !== "GK"){
           positionElement.innerHTML = `
             <div class="flex">
               <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
@@ -144,25 +152,136 @@ playersdata.onreadystatechange = function () {
               <img src="${player.logo}" alt="${player.club}">
             </div>
           `;
+        }else{
+            positionElement.innerHTML = `
+          <div class="flex">
+            <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
+              <span class="mb-[-5px] font-bold">${player.rating}</span>
+              <span class="text-[10px] font-medium">${player.position}</span>
+            </div>
+            <img class="w-20" src="${player.photo}" alt="${player.name}">
+          </div>
+          <p class="font-Raleway text-[11px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
+          <div class="text-[#362f16] gap-1 flex">
+            <div class="flex flex-col gap-0 justify-center items-center">
+              <span class=" text-[7px] font-medium mb-[-4px]">DIV</span>
+              <span class="font-bold text-[10px]">${player.diving}</span>
+            </div>
+            <div class="flex flex-col gap-0 justify-center items-center">
+              <span class=" text-[7px] font-medium mb-[-4px]">HAN</span>
+              <span class="font-bold text-[10px]">${player.handling}</span>
+            </div>
+            <div class="flex flex-col gap-0 justify-center items-center">
+              <span class=" text-[7px] font-medium mb-[-4px]">KIC</span>
+              <span class="font-bold text-[10px]">${player.kicking}</span>
+            </div>
+            <div class="flex flex-col gap-0 justify-center items-center">
+              <span class=" text-[7px] font-medium mb-[-4px]">REF</span>
+              <span class="font-bold text-[10px]">${player.reflexes}</span>
+            </div>
+            <div class="flex flex-col gap-0 justify-center items-center">
+              <span class=" text-[7px] font-medium mb-[-4px]">SPE</span>
+              <span class="font-bold text-[10px]">${player.speed}</span>
+            </div>
+            <div class="flex flex-col gap-0 justify-center items-center">
+              <span class=" text-[7px] font-medium mb-[-4px]">POS</span>
+              <span class="font-bold text-[10px]">${player.positioning}</span>
+            </div>
+          </div>
+          <div class="flex justify-center items-center w-3 gap-2">
+            <img src="${player.flag}" alt="${player.name}">
+            <img src="${player.logo}" alt="${player.club}">
+          </div>`
         
+        }
+
         
+
+        let img = document.createElement("img")
+        img.setAttribute("class","w-5 bg-red-500 rounded-full hover:scale-110 relative bottom-[10px] left-[45px] hidden")
+        img.setAttribute("src","/images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
+        img.setAttribute("alt","deleteico")
+
+        
+        positionElement.addEventListener("mouseover",function(){
+            img.classList.remove("hidden")
+            img.classList.add("block")
+        })
+        positionElement.addEventListener("mouseleave",function(){
+            img.classList.remove("block")
+            img.classList.add("hidden")
+        })
+        
+
+        img.addEventListener("click",function(event){
+
+          event.stopPropagation();
+
+          const playerIndex = addedToSquadArr.findIndex(play => play.name === player.name);
+          
+          
+              addedToSquadArr.splice(playerIndex, 1);
+              document.getElementById("modalfilter").classList.add("hidden");
+              document.getElementById("modalfilter").classList.remove("flex");
+          
+
+            positionElement.innerHTML = "";
+            let addImg = document.createElement('img');
+            
+            addImg.setAttribute("class","mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700");
+            addImg.setAttribute("src","/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg")
+
+            positionElement.appendChild(addImg);
+
+            positionElement.classList.add("bg-blackcard")
+            positionElement.classList.remove("bg-goldcard")
+
+            document.getElementById("modalfilter").classList.add("hidden");
+            document.getElementById("modalfilter").classList.remove("flex");
+            
+        })
+        
+        positionElement.appendChild(img)
+        
+        // add players added to squad to an array
+        function updateSquadPlayers(){
+        addedToSquadArr.push(player)
+        console.log(addedToSquadArr)
+      }
+      //player not added (le reste)
+      function noChoosenPlayers(){
+        
+      }
+
         document.getElementById("modalfilter").classList.add("hidden");
         document.getElementById("modalfilter").classList.remove("flex");
       });
   
-     
+      
       filtredPlayersCase.appendChild(div);
+    
     });
   }
 
     
     document.querySelectorAll('.position-button').forEach(button => {
       button.addEventListener('click', function () {
-        const position = button.getAttribute('data-position');
+        const position = button.getAttribute('player-position');
         addFiltreplayerToPosition(position);
+        
         document.getElementById("modalfilter").classList.add("flex");
         document.getElementById("modalfilter").classList.remove("hidden");
-      });
-    });
+
+      })
+    })
+    document.querySelectorAll(".substitution").forEach(button => {
+      button.addEventListener("click",function(){
+        
+        
+        document.getElementById("modalfilter").classList.add("flex");
+        document.getElementById("modalfilter").classList.remove("hidden");
+      })
+    })
+    
   }
 };
