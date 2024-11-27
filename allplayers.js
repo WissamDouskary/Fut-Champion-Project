@@ -23,7 +23,7 @@ playersdata.onreadystatechange = function(){
                     <img class="w-20" src="${player.photo}" alt="photo">
                 </div>
                 <div class="flex flex-col items-center">
-                    <p class="font-Raleway text-[9px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
+                    <p class="font-Raleway text-[10px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
                     <div class="text-[#362f16] gap-1 flex">
                         <div class="flex flex-col gap-0 justify-center items-center">
                             <span class=" text-[7px] font-medium mb-[-4px]">
