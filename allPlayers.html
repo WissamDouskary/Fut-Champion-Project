@@ -2,28 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Squad Elite FUT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squad Elite | All Players</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap');
-    </style>    
+    </style> 
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        clifford: '#da373d',
-      }
-      
-    },
-    fontFamily:{
-        Raleway: ["Raleway", 'sans-serif'],
-    }
-    
-  }
-}
-    </script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+              
+            },
+            fontFamily:{
+                Raleway: ["Raleway", 'sans-serif'],
+            },
+            backgroundImage: {
+            'staduim': "url('/images/stadium_background.webp')",
+            'goldenballcard':"url('/images/badge_ballon_dor.webp')",
+            'blackcard':"url('/images/blackcard.png')",
+            'total_rush':"url('/images/badge_total_rush.webp')",
+            'goldcard':"url('/images/badge_gold.webp')",
+            'messiPhoto':"url('/images/messi.webp')",
+            'intermiami':"url('/images/intermiami.webp')",
+            'argentina':"url('/images/argentina.webp')"
+             },
+          }
+        }
+</script>
 </head>
 <body class="bg-[#2b2a2a] text-white">
     <header class="bg-[#050505] flex justify-between px-6 md:px-16 py-6 items-center w-[100%]">
@@ -38,17 +47,32 @@ tailwind.config = {
         <img id="burgerclose" class="hidden" src="images/close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="closebtn">
         
     </header>
+
     <!-- burgermenu -->
     <ul id="burgermenu" class="bg-[#56cca3] absolute h-[100%] right-0 w-[75%] hidden md:hidden flex-col gap-4 pt-6 pl-4">
         <li><a href="index.html" class="md:text-xl font-Raleway">Home</a></li>
         <li><a href="squadbuilder.html" class="md:text-xl font-Raleway">Squad Builder</a></li>
      </ul>
-    <section class="mt-32 ml-10 font-Raleway flex flex-col justify-start items-start gap-10">
-        <h1 class=" font-bold text-6xl sm:text-7xl md:text-9xl"> Welcome <br> to Squad <span class="text-[#56cca3]">Elite</span> </h1>
-        <a href="squadbuilder.html"><button class="bg-[#0dd962] hover:bg-[#128040] duration-200 rounded-full p-5">Start Your Dream</button></a>
-    </section>
-    
-    <script>
+     <section class="font-Raleway mt-16 ml-20 mb-7">
+        <a href="/index.html"><h2 class="text-sm opacity-40"> Home </a> > <a href="/squadbuilder.html"> Squad Builder > <span class="text-[#56cca3]"> Players List </span> </a> </h2>
+        <p class="text-xl">EA FC 25 All Players</p>
+        <p class="text-[#0dd962]">Enjoy Your Time</p>
+     </section>
+
+     <section id="playersList" class="grid grid-cols-6 px-16">
+
+     </section>
+
+
+
+
+
+
+
+
+
+
+         <script>
         document.getElementById("burgermenubtn").addEventListener("click",function(){
             document.getElementById("burgermenu").classList.add("flex");
             document.getElementById("burgermenu").classList.remove("hidden");
@@ -65,5 +89,6 @@ tailwind.config = {
             document.getElementById("burgerclose").classList.remove("flex");
         })
     </script>
+    <script src="allplayers.js"></script>
 </body>
 </html>
