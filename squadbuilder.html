@@ -300,7 +300,7 @@
      </div>
 </div>
 
-<!-- modal for add player with filter -->
+<!-- modal for add player with filter on first lineup-->
  <div id="modalfilter" class="fixed inset-0 hidden justify-center items-center bg-black bg-opacity-45">
     
 <div class="px-10 bg-[#1f1f1f] max-h-max max-w-max rounded-xl">
@@ -308,7 +308,7 @@
     <div class="font-Raleway mt-16 ml-6 mb-7">
         <p class="text-xl">Players List :</p>
     </div>
-<div id="filtredPlayers" class="grid grid-cols-6 px-10 bg-[#1f1f1f] max-h-max max-w-max">
+<div id="filtredPlayers" class="grid grid-cols-6 px-10 bg-[#1f1f1f] max-h-96 max-w-max overflow-auto">
     <div>
         
     </div>
@@ -322,6 +322,29 @@
 </div>
 
 <!-- end of modal -->
+
+<!-- modal for add player with filter on substitution-->
+<div id="submodalfilter" class="fixed inset-0 hidden justify-center items-center bg-black bg-opacity-45">
+    
+    <div class="px-10 bg-[#1f1f1f] max-h-max max-w-max rounded-xl">
+    
+        <div class="font-Raleway mt-16 ml-6 mb-7">
+            <p class="text-xl">Players List :</p>
+        </div>
+    <div id="filtredSubPlayers" class="grid grid-cols-6 px-10 bg-[#1f1f1f] max-h-96 max-w-max overflow-auto">
+        <div>
+            
+        </div>
+    </div>
+    <!-- addbtn -->
+     <div class="flex justify-end pb-6 gap-3">
+    <!-- <input id="addToFormation" type="button" value="Add to Formation" class="bg-[#0dd962] hover:bg-[#128040] duration-200 px-6 py-3 rounded-full cursor-pointer "> -->
+    <input type="button" value="Cancel" class="bg-[#f0f0f0] text-black hover:bg-[#b3b3b3] duration-200 px-6 py-3 rounded-full cursor-pointer " onclick="document.getElementById('submodalfilter').classList.add('hidden')">
+    </div>
+    </div>
+    </div>
+    
+    <!-- end of modal -->
     
 
 
