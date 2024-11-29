@@ -1,4 +1,4 @@
-##### Fut Champion Project
+## Fut Champion Project
 
 This application allows users to create and manage a football team formation with dynamic player management. Users can select from predefined tactical formations, manage player positions, and ensure the team setup is correct, all while keeping a user-friendly interface.
 
