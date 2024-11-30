@@ -103,13 +103,13 @@ playersdata.onreadystatechange = function () {
       flag: "https://cdn3.futbin.com/content/fifa25/img/clubs/light/112658.png?fm=png&ixlib=java-2.1.0&verzion=2&w=22&s=1d2ef9f9a688ffd60760b0bb179b3bf2",
       club: pclub.value,
       logo: "https://cdn3.futbin.com/content/fifa25/img/clubs/light/112658.png?fm=png&ixlib=java-2.1.0&verzion=2&w=22&s=1d2ef9f9a688ffd60760b0bb179b3bf2",
-      rating: 85,
       pace: pPace.value,
       shooting: pShoot.value,
       passing: pPass.value,
       dribbling: pDriblle.value,
       defending: pDefend.value,
-      physical: pPhy.value
+      physical: pPhy.value,
+      rating: Math.floor((parseFloat(pPace.value) + parseFloat(pShoot.value) + parseFloat(pPass.value) + parseFloat(pDriblle.value) + parseFloat(pDefend.value) + parseFloat(pPhy.value)) / 6),
     }
     data.push(newNoGKPlayer);
     
@@ -125,13 +125,13 @@ playersdata.onreadystatechange = function () {
         flag: "https://cdn3.futbin.com/content/fifa25/img/clubs/light/112658.png?fm=png&ixlib=java-2.1.0&verzion=2&w=22&s=1d2ef9f9a688ffd60760b0bb179b3bf2",
         club: pclub.value,
         logo: "https://cdn3.futbin.com/content/fifa25/img/clubs/light/112658.png?fm=png&ixlib=java-2.1.0&verzion=2&w=22&s=1d2ef9f9a688ffd60760b0bb179b3bf2",
-        rating: 85,
         diving: divinggk.value,
         handling: gkhand.value,
         kicking: gkkick.value,
         reflexes: gkref.value,
         speed: gkspe.value,
-        positioning: gkposrate.value
+        positioning: gkposrate.value,
+        rating: Math.floor((parseFloat(divinggk.value)+parseFloat(gkhand.value)+parseFloat(gkkick.value)+parseFloat(gkref.value)+parseFloat(gkspe.value)+parseFloat(gkposrate.value))/6),
     }
     data.push(newGKPlayer);
   }
