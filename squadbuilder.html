@@ -156,8 +156,8 @@
      </div>
     </div>
     <!-- substitution -->
-    <div class="ml-10 bg-[#1f1f1f] mt-2 flex gap-5 p-4 max-w-max">
-        <div class="cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center substitution">
+    <div class="ml-10 bg-[#1f1f1f] mt-2 grid grid-cols-5 gap-7 p-4 max-w-max" id="substitutionCase">
+        <!-- <div class="cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center substitution">
             <img src="../images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700"  alt="add">
         </div>
 
@@ -184,7 +184,7 @@
         <div class="cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center substitution">
          <img src="../images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700"  alt="add">
 
-        </div>
+        </div> -->
 
     </div>
 
@@ -356,9 +356,28 @@
     
     <!-- end of modal -->
 
-    <!-- confirmation modal (alert) -->
-    
+    <!-- alert modal (alert) -->
 
+     <div id="alert" class="bg-black bg-opacity-40 fixed inset-0 hidden justify-center items-center z-50">
+    <div class="bg-[#1f1f1f] text-white p-4 rounded-lg shadow-md w-56 mt-5">
+        <p class="font-Raleway">Please fill all inputs fields!</p>
+        <button class="mt-6 mb-2 text-blue-100 hover:text-white">
+          <span class="font-Raleway bg-[#0dd962] px-6 py-2 rounded-full" onclick="document.getElementById('alert').classList.remove('flex');document.getElementById('alert').classList.add('hidden')">Close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- confirmation modal -->
+    <div id="confirmation" class="fixed inset-0 bg-black bg-opacity-20 hidden justify-center items-center z-50">
+        <div class="bg-[#1f1f1f] p-6 rounded-lg shadow-lg max-w-sm w-full">
+          <h3 class="text-lg font-Raleway text-white">Are you sure?</h3>
+          <p class="text-white font-Raleway mt-2">Do you really want to delete this item? This action cannot be undone.</p>
+          <div class="mt-4 flex justify-end space-x-4">
+            <button class="bg-gray-300 text-gray-800 py-2 px-4 rounded-full hover:bg-gray-400" onclick="document.getElementById('confirmation').classList.remove('flex');document.getElementById('confirmation').classList.add('hidden')">Cancel</button>
+            <button class="bg-red-500 text-white py-2 px-4 rounded-full hover:bg-red-600">Delete</button>
+          </div>
+        </div>
+      </div>
 
 
 

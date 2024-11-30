@@ -10,24 +10,37 @@
     </style>    
     <script>
 tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        clifford: '#da373d',
-      }
-      
-    },
-    fontFamily:{
-        Raleway: ["Raleway", 'sans-serif'],
-    }
-    
-  }
+    theme: {
+                extend: {
+                    colors: {
+                    clifford: '#da373d',
+                  }
+                  
+                },
+                fontFamily:{
+                    Raleway: ["Raleway", 'sans-serif'],
+                },
+                backgroundImage: {
+                'staduim': "url('../images/stadium_background.webp')",
+                'goldenballcard':"url('../images/badge_ballon_dor.webp')",
+                'blackcard':"url('../images/blackcard.png')",
+                'total_rush':"url('../images/badge_total_rush.webp')",
+                'goldcard':"url('../images/badge_gold.webp')",
+                'messiPhoto':"url('../images/messi.webp')",
+                'intermiami':"url('../images/intermiami.webp')",
+                'argentina':"url('../images/argentina.webp')"
+                 },
+                 backgroundSize: {
+                'blackcard': '110px',
+                'goldcard' : '130px',
+                },
+              }
 }
     </script>
 </head>
 <body class="bg-[#2b2a2a] text-white">
     <header class="bg-[#050505] flex justify-between px-6 md:px-16 py-6 items-center w-[100%]">
-        <a href="index.html"><img src="/images/Squad Elite.png" alt="Logo" class="w-36 md:w-40"></a>
+        <a href="index.html"><img src="../images/Squad Elite.png" alt="Logo" class="w-36 md:w-40"></a>
         <nav>
             <ul class="justify-center items-center gap-8 md:flex hidden">
                 <li><a href="index.html" class="md:text-xl font-Raleway">Home</a></li>
