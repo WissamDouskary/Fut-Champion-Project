@@ -93,7 +93,7 @@ playersdata.onreadystatechange = function(){
 
             PlayersList.appendChild(div)
         }else{
-            div.innerHTML = `<div class="scale-[1.6] mt-16">
+            div.innerHTML = `<div class="md:scale-[1.6] scale-[1] mt-2 md:mt-16">
             <div class="flex">
                 <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
                     <span class="mb-[-5px] font-bold">${player.rating}</span>
