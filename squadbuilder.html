@@ -20,6 +20,7 @@
                 fontFamily:{
                     Raleway: ["Raleway", 'sans-serif'],
                 },
+                
                 backgroundImage: {
                 'staduim': "url('../images/stadium_background.webp')",
                 'goldenballcard':"url('../images/badge_ballon_dor.webp')",
@@ -58,19 +59,19 @@
         <li><a href="index.html" class="md:text-xl font-Raleway">Home</a></li>
         <li><a href="squadbuilder.html" class="md:text-xl font-Raleway">Squad Builder</a></li>
      </ul>
-     <section class="font-Raleway mt-16 ml-20 mb-7">
+     <section class="font-Raleway mt-16 sm:ml-20 mb-7 ml-4">
         <a href="/index.html"><h2 class="text-sm opacity-40"> Home </a> ><span class="text-[#56cca3]"> Squad Builder</span> </h2>
         <p class="text-xl">EA FC 25 Tactics & Formations</p>
         <p class="text-[#0dd962]">Live Your Dream</p>
      </section>
 
 
-     <div class="flex gap-16 flex-col md:flex-row xl:gap-28">
-     <section class="bg-staduim h-[100vh] w-[56rem] bg-no-repeat ml-10 mt-6">
+     <div class="flex md:gap-5 flex-col lg:flex-row xl:gap-28 md:flex-col lg:justify-center lg:gap-3">
+     <section class="bg-staduim bg-center w-[100%] sm:h-[100vh] sm:w-[95%] bg-no-repeat sm:ml-6 sm:mt-6 md:ml-10 md:w-[90%]">
     
     <!-- attackers -->
-    <div id="attackers" class="flex items-start justify-center gap-14">
-        <div id="LW" class="cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position">
+    <div id="attackers" class="flex items-start justify-center md:gap-14 sm:gap-10">
+        <div id="LW" class="cursor-pointer bg-blackcard  bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position">
           
             <img src="../images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
         </div>
@@ -87,7 +88,7 @@
         </div>
       </div>
     <!-- medfilders -->
-    <div class="flex items-center justify-center gap-14">
+    <div class="flex items-center justify-center md:gap-14 sm:gap-10">
         <div id="LCM" class="cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position">
             <img src="../images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700"  alt="add">
             
@@ -100,7 +101,7 @@
         </div>
     </div>
     <!-- defenderse -->
-    <div class="flex items-center justify-center gap-14">
+    <div class="flex items-center justify-center md:gap-14 gap-2 sm:gap-10">
         <div id="LB" class="cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button"  >
             <img src="../images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700"  alt="add">
         </div>
@@ -120,18 +121,12 @@
             <img src="../images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700"  alt="add">
         </div>
     </div>
-
-
-
-    
-
-
      </section>
 
      
     
      
-     <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl ">
+     <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl w-[100%] sm:w-auto sm:ml-6 sm:mr-6 md:mr-6 lg:ml-0 lg:mr-9 lg:w-[40%]">
         <form class="max-w-sm mx-auto">
             <label for="formations" class="block mb-2 text-xl font-medium text-gray-900 dark:text-white font-Raleway">Formations</label>
             <select id="Formations" class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -158,16 +153,16 @@
             <p class="text-sm my-3">This approach gives the defence flexibility on how deep they drop, and which runs they track.</p>
         </form>
         <div class="flex gap-5 justify-center items-center mt-12">
-        <button id="addPlayerButton" class="bg-[#0dd962] hover:bg-[#128040] duration-200 px-11 py-3 rounded-full font-Raleway" onclick="document.getElementById('Addplayermodal').classList.add('flex'); document.getElementById('Addplayermodal').classList.remove('hidden')">Add Player</button>
-        <a href="/allPlayers.html"><button class="bg-[#0dd962] hover:bg-[#128040] duration-200 px-6 py-3 rounded-full font-Raleway">Show All Players</button></a>
+        <button id="addPlayerButton" class="bg-[#0dd962] hover:bg-[#128040] duration-200 md:px-11 md:py-3 px-9 py-2 rounded-full font-Raleway" onclick="document.getElementById('Addplayermodal').classList.add('flex'); document.getElementById('Addplayermodal').classList.remove('hidden')">Add Player</button>
+        <a href="/allPlayers.html"><button class="bg-[#0dd962] hover:bg-[#128040] duration-200 md:px-6 md:py-3 px-6 py-2 rounded-full font-Raleway ">Show All Players</button></a>
         </div>
      </div>
     </div>
 
     <!-- substitution -->
-    <div class="ml-10">
+    <div class="ml-6 md:ml-10">
         <h2 class="font-Raleway mt-9 mb-5 text-3xl">substitution :</h2>
-        <div class=" bg-[#1f1f1f] mt-2 grid grid-cols-5 gap-7 p-4 max-w-max" id="substitutionCase">
+        <div class=" bg-[#1f1f1f] mt-2 grid lg:grid-cols-5 grid-cols-2 gap-7 p-4 max-w-max sm:grid-cols-4" id="substitutionCase">
             
            
         </div>
@@ -293,7 +288,7 @@
      </div>
 </div>
 
-<!-- modal for add player with filter on first lineup-->
+<!-- modal for add player with filter on fomation-->
  <div id="modalfilter" class="fixed inset-0 hidden justify-center items-center bg-black bg-opacity-45">
     
 <div class="px-10 bg-[#1f1f1f] max-h-max max-w-max rounded-xl">
@@ -301,7 +296,7 @@
     <div class="font-Raleway mt-16 ml-6 mb-7">
         <p class="text-xl">Players List :</p>
     </div>
-<div id="filtredPlayers" class="grid grid-cols-6 px-10 bg-[#1f1f1f] max-h-96 max-w-max overflow-auto">
+<div id="filtredPlayers" class="grid lg:grid-cols-6 grid-cols-2 gap-8 px-10 bg-[#1f1f1f] max-h-96 max-w-max overflow-auto">
     <div>
         
     </div>

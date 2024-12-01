@@ -12,9 +12,9 @@ playersdata.onreadystatechange = function(){
 
             
             let div = document.createElement("div");
-            div.setAttribute("class","cursor-pointer bg-goldcard bg-no-repeat bg-center scale-100 bg-cover w-56 h-72 flex flex-col pt-8 items-center")
+            div.setAttribute("class","cursor-pointer bg-goldcard bg-no-repeat bg-center scale-100 bg-cover md:w-56 md:h-72 w-28 h-48 flex flex-col pt-8 items-center")
             if(player.position !== "GK"){
-            div.innerHTML = `<div class="scale-[1.6] mt-16">
+            div.innerHTML = `<div class="md:scale-[1.6] scale-[1] mt-2 md:mt-16">
             <div class="flex">
                 <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
                     <span class="mb-[-5px] font-bold">${player.rating}</span>
