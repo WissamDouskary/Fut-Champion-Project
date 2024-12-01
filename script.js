@@ -399,6 +399,7 @@ playersdata.onreadystatechange = function () {
             positionElement.classList.remove("bg-goldcard");
 
             noChoosenPlayers();
+            updateArraySquadPlayers();
 
           })
             
@@ -446,7 +447,7 @@ playersdata.onreadystatechange = function () {
           
 
 
-          if(player.position === 'GK' && document.getElementById('Position').value == "GK" ){
+          if(player.position === 'GK' && document.getElementById('editPosition').value == "GK" ){
             document.getElementById("editAddGkPlayer").classList.remove('hidden');
             document.getElementById("editAddGkPlayer").classList.add('grid');
 
@@ -484,26 +485,27 @@ playersdata.onreadystatechange = function () {
           player.photo = document.getElementById('editCardPhotourl').value
           player.position = document.getElementById('editPosition').value
 
-          player.diving = document.getElementById('editGkDiving').value
-          player.handling = document.getElementById('editGkHandling').value
-          player.kicking = document.getElementById('editGkKicking').value
-          player.reflexes = document.getElementById('editGkReflexe').value
-          player.speed = document.getElementById('editGkSpeed').value
-          player.positioning = document.getElementById('editGkPosition').value
-
+         
+            player.diving = document.getElementById('editGkDiving').value
+            player.handling = document.getElementById('editGkHandling').value
+            player.kicking = document.getElementById('editGkKicking').value
+            player.reflexes = document.getElementById('editGkReflexe').value
+            player.speed = document.getElementById('editGkSpeed').value
+            player.positioning = document.getElementById('editGkPosition').value
+        
           player.pace = document.getElementById('editNormalePace').value
           player.shooting = document.getElementById('editNormaleShoot').value
           player.passing = document.getElementById('editNormalePass').value
           player.dribbling = document.getElementById('editNormaleDriblle').value
           player.defending = document.getElementById('editNormaleDefend').value
           player.physical = document.getElementById('editNormalePhy').value
-
+        
           
 
 
           let posEle = document.querySelector(`#${player.position}`);
-              
-              if (posEle) {
+            
+              if (posEle.id !== "GK") {
                 posEle.innerHTML = `
                 <div class="flex">
                   <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
@@ -544,6 +546,46 @@ playersdata.onreadystatechange = function () {
                   <img src="${player.logo}" alt="${player.club}">
                 </div>
               `;
+              }else{
+                posEle.innerHTML = `
+                <div class="flex">
+                  <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
+                    <span class="mb-[-5px] font-bold">${player.rating}</span>
+                    <span class="text-[10px] font-medium">${player.position}</span>
+                  </div>
+                  <img class="w-20" src="${player.photo}" alt="${player.name}">
+                </div>
+                <p class="font-Raleway text-[11px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
+                <div class="text-[#362f16] gap-1 flex">
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">DIV</span>
+                    <span class="font-bold text-[10px]">${player.diving}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">HAN</span>
+                    <span class="font-bold text-[10px]">${player.handling}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">KIC</span>
+                    <span class="font-bold text-[10px]">${player.kicking}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">REF</span>
+                    <span class="font-bold text-[10px]">${player.reflexes}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">SPE</span>
+                    <span class="font-bold text-[10px]">${player.speed}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">POS</span>
+                    <span class="font-bold text-[10px]">${player.positioning}</span>
+                  </div>
+                </div>
+                <div class="flex justify-center items-center w-3 gap-2">
+                  <img src="${player.flag}" alt="${player.name}">
+                  <img src="${player.logo}" alt="${player.club}">
+                </div>`      
               }
 
               
@@ -552,6 +594,9 @@ playersdata.onreadystatechange = function () {
           
               document.getElementById("editAddplayermodal").classList.remove("flex");
               document.getElementById("editAddplayermodal").classList.add("hidden");
+
+              updateArraySquadPlayers();
+              noChoosenPlayers(); 
         })
 
           
