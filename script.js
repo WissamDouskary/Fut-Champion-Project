@@ -31,7 +31,7 @@ playersdata.onreadystatechange = function () {
     let playerName = document.getElementById("PlayerName");
     let playersPosition = document.getElementById("Position");
     let playerNationality = document.getElementById("Nationality");
-    let playerClub = document.getElementById("Club");
+    let playerClub = document.getElementById("clubName");
     let cardImageUrl = document.getElementById("cardPhotourl");
 
     playersPosition.addEventListener("change", function() {
@@ -89,6 +89,34 @@ playersdata.onreadystatechange = function () {
     document.getElementById("alert").classList.remove("hidden")
     document.getElementById("alert").classList.add("flex")
   }
+  if(playersPosition.value === 'GK'){
+    playerName.value = ""
+    cardImageUrl.value = ""
+    playersPosition.value = ""
+    playerNationality.value = ""
+    playerClub.value =""
+    gkDiving.value = ""
+    gkHandling.value = ""
+    gkKicking.value =""
+    gkReflexe.value = ""
+    gkSpeed.value =""
+    gkPosition.value = ""
+
+  }else{
+    playerName.value = ""
+    cardImageUrl.value = ""
+    playersPosition.value = ""
+    playerNationality.value = ""
+    playerClub.value =""
+    playerPace.value = ""
+    playerShoot.value =""
+    playerPass.value = ""
+    playerDriblle.value = ""
+    playerDefend.value =""
+    playerPhysics.value =""
+  }
+
+
     
   })
     
@@ -114,7 +142,6 @@ playersdata.onreadystatechange = function () {
     data.push(newNoGKPlayer);
     
   }
-  // function addGkToPlayersList(playerName, playersPosition, playerNationality, playerClub, gkDiving, gkHandling, gkKicking, gkReflexe, gkSpeed, gkPosition){}
   //add GK player 
   function addGkToPlayersList(name,cardImage, pos, nat, pclub, divinggk, gkhand, gkkick, gkref, gkspe, gkposrate){
     let newGKPlayer = {
@@ -230,8 +257,8 @@ playersdata.onreadystatechange = function () {
     }
     
     div.addEventListener('click', function () {
-        let positionElement = document.querySelector(`[player-position="${player.position}"]`);
-
+        let positionElement = document.querySelector(`#${player.position}`);
+        
         positionElement.classList.remove("bg-blackcard")
         positionElement.classList.add("bg-goldcard")
 
@@ -343,9 +370,19 @@ playersdata.onreadystatechange = function () {
           event.stopPropagation();
 
           const playerIndex = addedToSquadArr.findIndex(play => play.name === player.name);
-          
-          
-              addedToSquadArr.splice(playerIndex, 1);
+
+          document.getElementById('confirmation').classList.remove('hidden')
+          document.getElementById('confirmation').classList.add('flex')
+
+              document.getElementById('deleteBtn').addEventListener('click', function(){
+
+                addedToSquadArr.splice(playerIndex, 1)
+                document.getElementById('confirmation').classList.add('hidden')
+                document.getElementById('confirmation').classList.remove('flex')
+              
+              
+              
+              
               document.getElementById("modalfilter").classList.add("hidden");
               document.getElementById("modalfilter").classList.remove("flex");
           
@@ -358,8 +395,12 @@ playersdata.onreadystatechange = function () {
 
             positionElement.appendChild(addImg);
 
-            positionElement.classList.add("bg-blackcard")
-            positionElement.classList.remove("bg-goldcard")
+            positionElement.classList.add("bg-blackcard");
+            positionElement.classList.remove("bg-goldcard");
+
+            noChoosenPlayers();
+
+          })
             
             
             document.getElementById("modalfilter").classList.add("hidden");
@@ -369,8 +410,160 @@ playersdata.onreadystatechange = function () {
         
         positionElement.appendChild(img);
 
+        
+
+        let editimg = document.createElement('img');
+
+        editimg.setAttribute("class","w-5 bg-green-500 rounded-full hover:scale-110 relative bottom-[10px] left-[45px] hidden");
+        editimg.setAttribute("src","/images/edit_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
+        editimg.setAttribute("alt","editico");
+
+        positionElement.addEventListener("mouseover",function(){
+          editimg.classList.remove("hidden")
+          editimg.classList.add("block");
+      })
+      positionElement.addEventListener("mouseleave",function(){
+          editimg.classList.remove("block")
+          editimg.classList.add("hidden")
+      })
+
+
+        
+
+        editimg.addEventListener('click',function(event){
+          event.stopPropagation();
+
+          document.getElementById("editAddplayermodal").classList.add("flex");
+          document.getElementById("editAddplayermodal").classList.remove("hidden");
+          document.getElementById('editPosition').disabled = true;
+
+          document.getElementById('editPlayerName').value = player.name
+          document.getElementById('editNationality').value = player.nationality
+          document.getElementById('editClubName').value = player.club
+          document.getElementById('editCardPhotourl').value = player.photo
+          document.getElementById('editPosition').value = player.position
+
+          
+
+
+          if(player.position === 'GK' && document.getElementById('Position').value == "GK" ){
+            document.getElementById("editAddGkPlayer").classList.remove('hidden');
+            document.getElementById("editAddGkPlayer").classList.add('grid');
+
+            document.getElementById("editAddPlayer").classList.add('hidden');
+            document.getElementById("editAddPlayer").classList.remove('grid');
+              
+            document.getElementById("editGkDiving").value = player.diving
+            document.getElementById("editGkHandling").value = player.handling
+            document.getElementById("editGkKicking").value = player.kicking
+            document.getElementById("editGkReflexe").value = player.reflexes
+            document.getElementById("editGkSpeed").value = player.speed
+            document.getElementById("editGkPosition").value = player.positioning
+          }else{
+            if(document.getElementById('Position').value !== 'GK'){
+            document.getElementById("editAddPlayer").classList.remove('hidden');
+            document.getElementById("editAddPlayer").classList.add('grid');
+
+            document.getElementById("editAddGkPlayer").classList.add('hidden');
+            document.getElementById("editAddGkPlayer").classList.remove('grid');
+            
+            document.getElementById("editNormalePace").value = player.pace
+            document.getElementById("editNormaleShoot").value = player.shooting
+            document.getElementById("editNormalePass").value = player.passing
+            document.getElementById("editNormaleDriblle").value = player.dribbling
+            document.getElementById("editNormaleDefend").value = player.defending
+            document.getElementById("editNormalePhy").value = player.physical
+          }
+          }
+        
+        document.getElementById('editAddplayertolst').addEventListener('click',function(){
+          
+          player.name = document.getElementById('editPlayerName').value
+          player.nationality = document.getElementById('editNationality').value
+          player.club = document.getElementById('editClubName').value
+          player.photo = document.getElementById('editCardPhotourl').value
+          player.position = document.getElementById('editPosition').value
+
+          player.diving = document.getElementById('editGkDiving').value
+          player.handling = document.getElementById('editGkHandling').value
+          player.kicking = document.getElementById('editGkKicking').value
+          player.reflexes = document.getElementById('editGkReflexe').value
+          player.speed = document.getElementById('editGkSpeed').value
+          player.positioning = document.getElementById('editGkPosition').value
+
+          player.pace = document.getElementById('editNormalePace').value
+          player.shooting = document.getElementById('editNormaleShoot').value
+          player.passing = document.getElementById('editNormalePass').value
+          player.dribbling = document.getElementById('editNormaleDriblle').value
+          player.defending = document.getElementById('editNormaleDefend').value
+          player.physical = document.getElementById('editNormalePhy').value
+
+          
+
+
+          let posEle = document.querySelector(`#${player.position}`);
+              
+              if (posEle) {
+                posEle.innerHTML = `
+                <div class="flex">
+                  <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
+                    <span class="mb-[-5px] font-bold">${player.rating}</span>
+                    <span class="text-[10px] font-medium">${player.position}</span>
+                  </div>
+                  <img class="w-20" src="${player.photo}" alt="${player.name}">
+                </div>
+                <p class="font-Raleway text-[11px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
+                <div class="text-[#362f16] gap-1 flex">
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">PAC</span>
+                    <span class="font-bold text-[10px]">${player.pace}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">SHO</span>
+                    <span class="font-bold text-[10px]">${player.shooting}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">PAS</span>
+                    <span class="font-bold text-[10px]">${player.passing}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">DRI</span>
+                    <span class="font-bold text-[10px]">${player.dribbling}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">DEF</span>
+                    <span class="font-bold text-[10px]">${player.defending}</span>
+                  </div>
+                  <div class="flex flex-col gap-0 justify-center items-center">
+                    <span class=" text-[7px] font-medium mb-[-4px]">PHY</span>
+                    <span class="font-bold text-[10px]">${player.physical}</span>
+                  </div>
+                </div>
+                <div class="flex justify-center items-center w-3 gap-2">
+                  <img src="${player.flag}" alt="${player.name}">
+                  <img src="${player.logo}" alt="${player.club}">
+                </div>
+              `;
+              }
+
+              
+              posEle.appendChild(editimg)
+              posEle.appendChild(img)
+          
+              document.getElementById("editAddplayermodal").classList.remove("flex");
+              document.getElementById("editAddplayermodal").classList.add("hidden");
+        })
+
+          
+        })
+
+        positionElement.appendChild(editimg)
+
+
+
+
         updateArraySquadPlayers();
-        noChoosenPlayers()
+        noChoosenPlayers();
         
 
         // add players added to squad to an array
@@ -380,16 +573,6 @@ playersdata.onreadystatechange = function () {
 
       
       
-      
-      
-
-      // document.querySelectorAll('.substitution').forEach(card => {
-      //   card.addEventListener("click", function(){
-      //     noChoosenPlayers();
-      //   })
-      // })
-
-    
         document.getElementById("modalfilter").classList.add("hidden");
         document.getElementById("modalfilter").classList.remove("flex");
       });
@@ -407,7 +590,7 @@ playersdata.onreadystatechange = function () {
     document.querySelectorAll('.position-button').forEach(card => {
       card.addEventListener('click', function () {
         
-        const position = card.getAttribute('player-position');
+        const position = card.getAttribute('id');
         addFiltreplayerToPosition(position);
         
         document.getElementById("modalfilter").classList.add("flex");
@@ -416,21 +599,8 @@ playersdata.onreadystatechange = function () {
       })
     })
 
-    // substitution function start 
-
-    // document.querySelectorAll('.substitution').forEach(card => {
-    //   card.addEventListener("click", function() {
-    //     cardSub = card;
-    //     noChoosenPlayers();
-        
-    //   })
-    // });
-    
-
     //notAddTosquad()
     //player not added (le reste)
-    
-
     function noChoosenPlayers(){
 
       let notFoundOnSquad = [];
@@ -454,8 +624,6 @@ playersdata.onreadystatechange = function () {
       
 
         addPlayersToSub();
-        // document.getElementById("submodalfilter").classList.remove("hidden");
-        // document.getElementById("submodalfilter").classList.add("flex");
         
     }
     // end of function 
@@ -466,9 +634,7 @@ playersdata.onreadystatechange = function () {
       substitutionCase.innerHTML = '';
       
       notAddTosquad.forEach(player => {
-        // if (addedSubPlayers.includes(player.name)) {
-        //   return;
-        // }
+        
         let div = document.createElement("div");
         div.setAttribute("class", "cursor-pointer bg-blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center");
 
@@ -560,170 +726,12 @@ playersdata.onreadystatechange = function () {
         }
     
         substitutionCase.appendChild(div);
+        
 
       
       });
     
-      
-      // document.querySelectorAll(".subPlayers").forEach(playerCard => {
-      //   playerCard.addEventListener('click', function () {
-
-          
-          
-      //     const player = notAddTosquad.find(player => player.name === playerCard.querySelector('p').textContent); 
-
-         
-
-      //     if (addedSubPlayers.includes(player.name)) {
-      //       alert("This player is already added to substitutions.");
-      //       return; 
-      //     }
-    
-      //     cardSub.classList.remove("bg-blackcard");
-      //     cardSub.classList.add("bg-goldcard");
-  
-      //     if (player.position !== "GK") {
-      //       cardSub.innerHTML = `
-      //         <div class="flex">
-      //           <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
-      //             <span class="mb-[-5px] font-bold">${player.rating}</span>
-      //             <span class="text-[10px] font-medium">${player.position}</span>
-      //           </div>
-      //           <img class="w-20" src="${player.photo}" alt="${player.name}">
-      //         </div>
-      //         <p class="font-Raleway text-[11px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
-      //         <div class="text-[#362f16] gap-1 flex">
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">PAC</span>
-      //             <span class="font-bold text-[10px]">${player.pace}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">SHO</span>
-      //             <span class="font-bold text-[10px]">${player.shooting}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">PAS</span>
-      //             <span class="font-bold text-[10px]">${player.passing}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">DRI</span>
-      //             <span class="font-bold text-[10px]">${player.dribbling}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">DEF</span>
-      //             <span class="font-bold text-[10px]">${player.defending}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">PHY</span>
-      //             <span class="font-bold text-[10px]">${player.physical}</span>
-      //           </div>
-      //         </div>
-      //         <div class="flex justify-center items-center w-3 gap-2">
-      //           <img src="${player.flag}" alt="${player.name}">
-      //           <img src="${player.logo}" alt="${player.club}">
-      //         </div>
-      //       `
-      //     } else {
-      //       cardSub.innerHTML = `
-      //         <div class="flex">
-      //           <div class="flex flex-col mr-[-8px] text-[#362f16] items-center">
-      //             <span class="mb-[-5px] font-bold">${player.rating}</span>
-      //             <span class="text-[10px] font-medium">${player.position}</span>
-      //           </div>
-      //           <img class="w-20" src="${player.photo}" alt="${player.name}">
-      //         </div>
-      //         <p class="font-Raleway text-[11px] font-bold text-[#362f16] mb-[-4px]">${player.name}</p>
-      //         <div class="text-[#362f16] gap-1 flex">
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">DIV</span>
-      //             <span class="font-bold text-[10px]">${player.diving}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">HAN</span>
-      //             <span class="font-bold text-[10px]">${player.handling}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">KIC</span>
-      //             <span class="font-bold text-[10px]">${player.kicking}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">REF</span>
-      //             <span class="font-bold text-[10px]">${player.reflexes}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">SPE</span>
-      //             <span class="font-bold text-[10px]">${player.speed}</span>
-      //           </div>
-      //           <div class="flex flex-col gap-0 justify-center items-center">
-      //             <span class=" text-[7px] font-medium mb-[-4px]">POS</span>
-      //             <span class="font-bold text-[10px]">${player.positioning}</span>
-      //           </div>
-      //         </div>
-      //         <div class="flex justify-center items-center w-3 gap-2">
-      //           <img src="${player.flag}" alt="${player.name}">
-      //           <img src="${player.logo}" alt="${player.club}">
-      //         </div>
-      //       `
-          
-      //     }
-      //     //delete function of sub players
-      //      let img = document.createElement("img")
-      //      img.setAttribute("class","w-5 bg-red-500 rounded-full hover:scale-110 relative bottom-[10px] left-[45px] hidden")
-      //      img.setAttribute("src","/images/delete_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
-      //      img.setAttribute("alt","deleteico")
-
-      
-      //     cardSub.addEventListener("mouseover",function(){
-      //       img.classList.remove("hidden")
-      //       img.classList.add("block")
-      //   })
-      //    cardSub.addEventListener("mouseleave",function(){
-      //       img.classList.remove("block")
-      //      img.classList.add("hidden")
-
-          
-      // })
-      
-      // img.addEventListener("click",function(event){
-      //   event.stopPropagation();
-
-      //   let subPlayer = notAddTosquad.findIndex(sub => sub.name === player.name)
-        
-      //   notAddTosquad.splice(subPlayer, 1);
-
-      //   // let deletePlayerFromAddedSubPlayersArr = addedSubPlayers.indexOf(player.name);
-      //   // addedSubPlayers.splice(deletePlayerFromAddedSubPlayersArr,1)
-        
-      //   // console.log(addedSubPlayers)
-
-      //   cardSub.innerHTML = "";
-      //     let addImg = document.createElement('img');
-          
-      //     addImg.setAttribute("class","mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700");
-      //     addImg.setAttribute("src","/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg")
-
-      //     cardSub.appendChild(addImg);
-
-      //     cardSub.classList.add("bg-blackcard")
-      //     cardSub.classList.remove("bg-goldcard")
-        
-
-          
-
-      // })
-
-      // addedSubPlayers.push(player.name);
-      
-
-      // cardSub.appendChild(img)
-
-      //       document.getElementById("submodalfilter").classList.remove('flex');
-      //       document.getElementById("submodalfilter").classList.add('hidden');
-      //   })
-      // })
-      
     } //add to sub function end
-  
 
   }
 };
