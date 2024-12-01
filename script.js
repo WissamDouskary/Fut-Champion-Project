@@ -40,31 +40,17 @@ playersdata.onreadystatechange = function () {
       let addPlayerDiv = document.getElementById("addPlayer");
       const addGkDiv = document.getElementById("AddGkPlayer");
       
-      const otherPositionsDiv = document.getElementById("otherpositionsdiv"); 
+      
       
       if (playersPosition.value == "GK") {
-        
         addGkDiv.classList.add("grid");
         addGkDiv.classList.remove("hidden");
         addPlayerDiv.classList.add("hidden");
         addPlayerDiv.classList.remove("grid");
-        
-       
-        if (otherPositionsDiv) {
-          otherPositionsDiv.classList.add("hidden");
-          otherPositionsDiv.classList.remove("grid");
-        }
       } else {
         
         addPlayerDiv.classList.remove("hidden");
         addPlayerDiv.classList.add("grid");
-        
-       
-        if (otherPositionsDiv) {
-          otherPositionsDiv.classList.remove("hidden");
-          otherPositionsDiv.classList.add("grid");
-        }
-        
         
         addGkDiv.classList.add("hidden");
         addGkDiv.classList.remove("grid");
