@@ -56,12 +56,22 @@ playersdata.onreadystatechange = function () {
         addGkDiv.classList.remove("grid");
       }
     });
-    
+   
+    function playerStatsValidation(value) {
+      let regex = /^([3-9][0-9]:?)$/;
+     
+      return regex.test(value);
+      
+  }
+
+
+
+
     
   let addToArrBtn = document.getElementById("addplayertolst")
   addToArrBtn.addEventListener("click",function(event){
     event.preventDefault();
-    if(playerName.value.trim() !== "" && cardImageUrl.value.trim() !== "" && playersPosition.value.trim() !== "" && playerNationality.value.trim() !== "" && playerClub.value.trim() !== ""){
+    if(playerName.value.trim() !== "" && cardImageUrl.value.trim() !== "" && playersPosition.value.trim() !== "" && playerNationality.value.trim() !== "" && playerClub.value.trim() !== "" && playerStatsValidation(playerPace.value)){
     if(playersPosition.value === "GK"){
       addGkToPlayersList(playerName, cardImageUrl, playersPosition, playerNationality, playerClub, gkDiving, gkHandling, gkKicking, gkReflexe, gkSpeed, gkPosition)
       noChoosenPlayers()
@@ -101,6 +111,7 @@ playersdata.onreadystatechange = function () {
     playerDefend.value =""
     playerPhysics.value =""
   }
+
 
 
     
@@ -351,51 +362,52 @@ playersdata.onreadystatechange = function () {
         })
         
 
-        img.addEventListener("click",function(event){
-
+        img.addEventListener("click", function(event) {
           event.stopPropagation();
-
-          const playerIndex = addedToSquadArr.findIndex(play => play.name === player.name);
-
-          document.getElementById('confirmation').classList.remove('hidden')
-          document.getElementById('confirmation').classList.add('flex')
-
-              document.getElementById('deleteBtn').addEventListener('click', function(){
-
-                addedToSquadArr.splice(playerIndex, 1)
-                document.getElementById('confirmation').classList.add('hidden')
-                document.getElementById('confirmation').classList.remove('flex')
+      
+          let playerIndex = addedToSquadArr.findIndex(play => play.name === player.name);
+      
+          document.getElementById('confirmation').classList.remove('hidden');
+          document.getElementById('confirmation').classList.add('flex');
+        
+          
+          let deleteBtn = document.getElementById('deleteBtn');
+          let deleteFunction = function() {
               
-              
-              
+              addedToSquadArr.splice(playerIndex, 1); 
+              document.getElementById('confirmation').classList.add('hidden');
+              document.getElementById('confirmation').classList.remove('flex');
               
               document.getElementById("modalfilter").classList.add("hidden");
               document.getElementById("modalfilter").classList.remove("flex");
-          
-
-            positionElement.innerHTML = "";
-            let addImg = document.createElement('img');
-            
-            addImg.setAttribute("class","mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700");
-            addImg.setAttribute("src","/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg")
-
-            positionElement.appendChild(addImg);
-
-            positionElement.classList.add("bg-blackcard");
-            positionElement.classList.remove("bg-goldcard");
-
-            noChoosenPlayers();
-            updateArraySquadPlayers();
-
-          })
-            
-            
-            document.getElementById("modalfilter").classList.add("hidden");
-            document.getElementById("modalfilter").classList.remove("flex");
-            
-        })
+              
+              positionElement.innerHTML = "";
+              let addImg = document.createElement('img');
+              
+              addImg.setAttribute("class", "mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700");
+              addImg.setAttribute("src", "/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg");
+      
+              positionElement.appendChild(addImg);
+      
+              positionElement.classList.add("bg-blackcard");
+              positionElement.classList.remove("bg-goldcard");
+      
+              noChoosenPlayers();
+              updateArraySquadPlayers(); 
+      
+              
+              deleteBtn.removeEventListener('click', deleteFunction);
+          };
         
-        positionElement.appendChild(img);
+         
+          deleteBtn.addEventListener('click', deleteFunction);
+      
+          document.getElementById("modalfilter").classList.add("hidden");
+          document.getElementById("modalfilter").classList.remove("flex");
+      });
+      
+      positionElement.appendChild(img);
+      
 
         
 
@@ -571,7 +583,7 @@ playersdata.onreadystatechange = function () {
                 <div class="flex justify-center items-center w-3 gap-2">
                   <img src="${player.flag}" alt="${player.name}">
                   <img src="${player.logo}" alt="${player.club}">
-                </div>`      
+                </div>`
               }
 
               
@@ -584,7 +596,7 @@ playersdata.onreadystatechange = function () {
               updateArraySquadPlayers();
               noChoosenPlayers(); 
         })
-
+        
           
         })
 
@@ -758,7 +770,7 @@ playersdata.onreadystatechange = function () {
     
         substitutionCase.appendChild(div);
         
-
+        
       
       });
     
