@@ -56,13 +56,7 @@ playersdata.onreadystatechange = function () {
         addGkDiv.classList.remove("grid");
       }
     });
-   
-    function playerStatsValidation(value) {
-      let regex = /^([3-9][0-9]:?)$/;
-     
-      return regex.test(value);
-      
-  }
+    
 
 
 
@@ -71,10 +65,10 @@ playersdata.onreadystatechange = function () {
   let addToArrBtn = document.getElementById("addplayertolst")
   addToArrBtn.addEventListener("click",function(event){
     event.preventDefault();
-    if(playerName.value.trim() !== "" && cardImageUrl.value.trim() !== "" && playersPosition.value.trim() !== "" && playerNationality.value.trim() !== "" && playerClub.value.trim() !== "" && playerStatsValidation(playerPace.value)){
+    if(playerName.value.trim() !== "" && cardImageUrl.value.trim() !== "" && playersPosition.value.trim() !== "" && playerNationality.value.trim() !== "" && playerClub.value.trim() !== "" ){
     if(playersPosition.value === "GK"){
       addGkToPlayersList(playerName, cardImageUrl, playersPosition, playerNationality, playerClub, gkDiving, gkHandling, gkKicking, gkReflexe, gkSpeed, gkPosition)
-      noChoosenPlayers()
+      noChoosenPlayers();
       document.getElementById("Addplayermodal").classList.add("hidden");
     }else{
       addNoGKToPlayersList(playerName, cardImageUrl, playersPosition, playerNationality, playerClub, playerPace, playerShoot, playerPass, playerDriblle, playerDefend, playerPhysics)
@@ -88,7 +82,7 @@ playersdata.onreadystatechange = function () {
   if(playersPosition.value === 'GK'){
     playerName.value = ""
     cardImageUrl.value = ""
-    playersPosition.value = ""
+    playersPosition.value = "SelectOne"
     playerNationality.value = ""
     playerClub.value =""
     gkDiving.value = ""
@@ -101,7 +95,7 @@ playersdata.onreadystatechange = function () {
   }else{
     playerName.value = ""
     cardImageUrl.value = ""
-    playersPosition.value = ""
+    playersPosition.value = "SelectOne"
     playerNationality.value = ""
     playerClub.value =""
     playerPace.value = ""
